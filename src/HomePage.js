@@ -43,16 +43,16 @@ class HomePage extends React.Component{
     }
 
     upVoting(id){
-        //since we have to make upvote as a permanent change
-        var articleToVote=this.state.articles.find(article=>article.id===id);
-        var count=+(localStorage.getItem("counter"));
-        console.log(count);
-        articleToVote.upvote +=1;
-   
+         var articles = this.state.articles;
+        var articleToVote=articles.find(article => article.id===id);
+          var indexToDelete=articles.indexOf(articleToVote);
+           articleToVote.upvote +=1;
+        articles.splice(indexToDelete, 1, articleToVote)
         this.setState({
                  articles
              }) 
-    }
+             this.filterUpVotes();
+     }
 
    
     render(){
