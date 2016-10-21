@@ -1,0 +1,15 @@
+#author-desc{
+    padding-left:52px;
+}
+
+.list-story-star-grouper{
+    display: hidden;
+    float:right;
+}
+#row :hover .list-story-star-grouper{
+    display: block;
+}
+
+#upvote{
+    float:left;
+}
