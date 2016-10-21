@@ -24,13 +24,12 @@ class HomePage extends React.Component{
     }
 
     starredArticle(id){
-        var articles = this.state.totalArticle;
+        var articles = this.state.articles.slice(0).map(product => Object.assign({}, product));
            var articleToStar=articles.find(article=>article.id===id);
            articleToStar.isAStar=true;
            console.log('Thank you for the star');
              this.setState({
                  articles:articles,
-                 totalArticle:articles
              })
     }
 
@@ -47,12 +46,13 @@ class HomePage extends React.Component{
          var articles = this.state.articles;
         var articleToVote=articles.find(article => article.id===id);
           var indexToDelete=articles.indexOf(articleToVote);
+        
            articleToVote.upvote +=1;
-        articles.splice(indexToDelete, 1, articleToVote)
+        articles.splice(indexToDelete, 1, articleToVote);
         this.setState({
                  articles
              }) 
-             this.filterUpVotes();
+           
      }
 
    
