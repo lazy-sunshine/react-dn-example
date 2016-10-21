@@ -11,12 +11,12 @@ class HomePage extends React.Component{
         this.upVoting=this.upVoting.bind(this);
         this.state={
             articles:articles,
-            filter:[]
+            totalArticle:articles
         }
     }
 
     filterUpVotes(){
-             var articles = this.state.articles.slice(0).map(product => Object.assign({}, product));
+             var articles = this.state.totalArticle.slice(0).map(product => Object.assign({}, product));
             var a=articles.sort((a,b)=>(b.upvote-a.upvote));
              this.setState({
                  articles:a
@@ -24,12 +24,13 @@ class HomePage extends React.Component{
     }
 
     starredArticle(id){
-        var articles = this.state.articles.slice(0).map(product => Object.assign({}, product));
+        var articles = this.state.totalArticle;
            var articleToStar=articles.find(article=>article.id===id);
            articleToStar.isAStar=true;
            console.log('Thank you for the star');
              this.setState({
                  articles:articles,
+                 totalArticle:articles
              })
     }
 
